@@ -1,6 +1,6 @@
 <% include partials/header.ejs %>
     <div class="table-wrapper">
-        <% if (players.length > 0) {%>
+        <% if (players.rowCount > 0) {%>
             <table class="table table-hovered">
                 <thead class="thead-dark">
                     <tr>
@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% players.forEach((player, index) => { %>
+                    <% players.rows.forEach((player, index) => { %>
                         <tr>
                             <th scope="row"><%= player.id %></th>
                             <td><img src="/assets/img/<%= player.image %>" class="rounded-circle player-img" alt=""></td>

@@ -1,7 +1,7 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const { Client } = require('pg');
 const path = require('path');
 const app = express();
 
@@ -10,12 +10,12 @@ const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = req
 const port = 2000;
 
 // create connection to database
-// the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
-const db = mysql.createConnection ({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'socka'
+const db = new Client({
+    user : 'postgres',
+    host : 'localhost',
+    database : 'socka',
+    password : 'qwe123',
+    port : 5432,
 });
 
 // connect to database
@@ -24,7 +24,9 @@ db.connect((err) => {
         throw err;
     }
     console.log('Connected to database');
+
 });
+
 global.db = db;
 
 // configure middleware
