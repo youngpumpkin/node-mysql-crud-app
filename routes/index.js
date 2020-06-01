@@ -8,7 +8,6 @@ module.exports = {
                 res.redirect('/');
             }
 
-            console.log('result length:', result.length)
             res.render('index.ejs', {
                 title: "Welcome to Socka | View Players"
                 ,players: result

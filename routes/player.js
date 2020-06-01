@@ -29,7 +29,7 @@ module.exports = {
             if (err) {
                 return res.status(500).send(err);
             }
-            if (result.length > 0) {
+            if (result.rowCount > 0) {
                 message = 'Username already exists';
                 res.render('add-player.ejs', {
                     message,
@@ -72,7 +72,7 @@ module.exports = {
             }
             res.render('edit-player.ejs', {
                 title: "Edit  Player"
-                ,player: result[0]
+                ,player: result.rows[0]
                 ,message: ''
             });
         });
@@ -94,15 +94,15 @@ module.exports = {
     },
     deletePlayer: (req, res) => {
         let playerId = req.params.id;
-        let getImageQuery = 'SELECT image from players WHERE id = "' + playerId + '"';
-        let deleteUserQuery = 'DELETE FROM players WHERE id = "' + playerId + '"';
+        let getImageQuery = 'SELECT image from players WHERE id = ' + playerId;
+        let deleteUserQuery = 'DELETE FROM players WHERE id = ' + playerId;
 
         db.query(getImageQuery, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
 
-            let image = result[0].image;
+            let image = result.rows[0].image;
 
             fs.unlink(`public/assets/img/${image}`, (err) => {
                 if (err) {
