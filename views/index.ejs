@@ -1,4 +1,12 @@
 <% include partials/header.ejs %>
+<form action="/search" method="POST">
+  <label for="search">Username:</label>
+  <input type="search" id="search" name="username">
+  <label for="date">Date:</label>
+  <input type="date" id="reg_date" name="date", value="2020-06-05">
+  <input type="submit">
+</form>
+
     <div class="table-wrapper">
         <% if (players.rowCount > 0) {%>
             <table class="table table-hovered">
@@ -11,6 +19,7 @@
                         <th scope="col">Position</th>
                         <th scope="col">Number</th>
                         <th scope="col">Username</th>
+                        <th scope="col">Reg Time</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -24,6 +33,7 @@
                             <td><%= player.position %></td>
                             <td><%= player.number %></td>
                             <td>@<%= player.user_name %></td>
+                            <td><%= player.reg_time.toDateString() %></td>
                             <td>
                                 <a href="/edit/<%= player.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
                                 <a href="/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
