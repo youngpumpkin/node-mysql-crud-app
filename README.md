@@ -1,5 +1,8 @@
 "# node-pgsql-crud-app" 
 
+#### create db
+CREATE DATABASE socka;
+
 
 #### psql query for creating table
 CREATE TABLE IF NOT EXISTS players (
@@ -16,4 +19,4 @@ CREATE TABLE IF NOT EXISTS players (
 
 
 #### password are needed for successful db connection
-ALTER USER postgres PASSWORD 'newPassword';
+ALTER USER postgres PASSWORD 'qwe123';
