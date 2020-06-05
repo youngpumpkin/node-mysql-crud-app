@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS players (
   number bigint NOT NULL,
   image varchar(255) NOT NULL,
   user_name varchar(20) NOT NULL,
+  reg_time timestamp with time zone DEFAULT now(),
   PRIMARY KEY (id)
 );
 
