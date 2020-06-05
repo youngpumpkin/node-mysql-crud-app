@@ -1,7 +1,7 @@
 "# node-pgsql-crud-app" 
 
 
-# psql query for creating table
+##### psql query for creating table
 CREATE TABLE IF NOT EXISTS players (
   id bigserial NOT NULL,
   first_name varchar(255) NOT NULL,
@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS players (
 );
 
 
-# password are needed for successful db connection
+##### password are needed for successful db connection
 ALTER USER postgres PASSWORD 'newPassword';
