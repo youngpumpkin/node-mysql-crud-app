@@ -1,11 +1,15 @@
 <% include partials/header.ejs %>
 <form action="/search" method="POST">
-  <label for="search">Username:</label>
-  <input type="search" id="search" name="username">
+  <label for="search">Search</label>
+  <input type="search" id="search" name="username", placeholder="Username" required>
   <label for="date">Date:</label>
-  <input type="date" id="reg_date" name="date", value="2020-06-05">
+  <input type="date" id="reg_date" name="reg_date">
   <input type="submit">
 </form>
+
+<script>
+  document.getElementById('reg_date').value = new Date().toISOString().substring(0, 10);
+</script>
 
     <div class="table-wrapper">
         <% if (players.rowCount > 0) {%>
