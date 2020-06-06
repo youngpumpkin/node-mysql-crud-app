@@ -16,10 +16,8 @@ module.exports = {
 
 		db.query("SELECT COUNT(*) FROM players", (err, result) => {				
 			total_count = Number(result.rows[0].count);
-					    console.log(total_count)
 
 			page_total = Math.ceil(total_count / item_num); 
-						console.log("page total" + page_total)
 
     		page_start = ((Math.ceil(page_num / page_size) - 1) * page_size) + 1;
 			page_end = (page_start + page_size) - 1;

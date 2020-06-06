@@ -61,20 +61,16 @@
   <% if (players.rowCount != 0) { %>
   <div class="" style="text-align:center;">
     <ul class="pagination">
-      <li <%if(page.num == 1){%> class="disabled" <%}else{%>class="waves-effect" <%}%> >
+      <li <%if(page.num == 1){%> class="disabled" <%}else{%><%}%> >
        <a <%if(page.num > 1){%> href="?page_num=<%=page.num-1%>" <%}%>>
        </a>
      </li>
 		<h6>
 			pages&nbsp;
 		</h6>
-    <% for(var i=page.start; i<=page.end; i++){ %> <li <%if(i===page.num){%> class="active"
+    <% for(var i=page.start; i<=page.end; i++){ %> <li <%if(i===page.num){%> class="disabled"
         <%}%>><a href="?page_num=<%=i%>"><%=i%>&nbsp;</a></li>
       <% } %>
-      <li <%if(page.num == page.total){%> class="disabled" <%}else{%> class="waves-effect" <%}%>>
-       <a <%if(page.num < page.total){%> href="?page_num=<%=page.num+1%>" <%}%> class="waves-effect">
-     </a>
-   </li>
    </ul>
   </div>
   <% } %> 
