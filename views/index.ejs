@@ -1,14 +1,21 @@
 <% include partials/header.ejs %>
-<form action="/search" method="POST">
+<form action="/search" method="GET">
   <label for="search">Search</label>
-  <input type="search" id="search" name="username", placeholder="Username" required>
-  <label for="date">Date:</label>
-  <input type="date" id="reg_date" name="reg_date">
+  <input type="search" id="username" name="username", placeholder="Username", value="<%= query.username %>" required>
+  <label for="date">Reg Date</label>
+  <input type="date" id="reg_date" name="reg_date", value="<%= query.reg_date %>" required>
   <input type="submit">
 </form>
 
-<script>
-  document.getElementById('reg_date').value = new Date().toISOString().substring(0, 10);
+<script>	
+	/*
+	function isEmpty(str) {
+   		return (!str || 0 === str.length);
+	}
+  if (isEmpty(document.getElementById('reg_date').value)) {
+  	document.getElementById('reg_date').value = new Date().toISOString().substring(0, 10);
+  }
+  */
 </script>
 
     <div class="table-wrapper">
@@ -23,7 +30,7 @@
                         <th scope="col">Position</th>
                         <th scope="col">Number</th>
                         <th scope="col">Username</th>
-                        <th scope="col">Reg Time</th>
+                        <th scope="col">Reg Date</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
