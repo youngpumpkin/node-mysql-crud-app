@@ -3,11 +3,13 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const { Client } = require('pg');
 const path = require('path');
+const fs = require('fs');
 const app = express();
 
 const {getHomePage} = require('./routes/index');
 const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const port = 2000;
+var dir = './public/assets/img';
 
 // create connection to database
 const db = new Client({
@@ -47,6 +49,11 @@ app.get('/edit/:id', editPlayerPage);
 app.get('/delete/:id', deletePlayer);
 app.post('/add', addPlayer);
 app.post('/edit/:id', editPlayer);
+
+// make file storage
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir, { recursive: true });
+}
 
 // set the app to listen on the port
 app.listen(port, () => {
