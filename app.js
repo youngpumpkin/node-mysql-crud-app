@@ -1,4 +1,5 @@
 const express = require('express');
+const https = require('https');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const { Client } = require('pg');
@@ -9,6 +10,7 @@ const app = express();
 const {getHomePage} = require('./routes/index');
 const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const port = 2000;
+const ssl_port = 2443;
 var dir = './public/assets/img';
 
 // create connection to database
@@ -55,7 +57,21 @@ if (!fs.existsSync(dir)){
     fs.mkdirSync(dir, { recursive: true });
 }
 
+var key = fs.readFileSync('cert/ca.key');
+var cert = fs.readFileSync('cert/ca.crt');
+var options = {
+  key: key,
+  cert: cert
+};
+
+var server = https.createServer(options, app);
+
 // set the app to listen on the port
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
+});
+
+// https
+server.listen(ssl_port, () => {
+    console.log(`Server running on port: ${ssl_port}`);
 });
